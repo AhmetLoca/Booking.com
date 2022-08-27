@@ -1,0 +1,12 @@
+@charset "UTF-8";
+.Header {
+  border-bottom: 1px solid #ddd; }
+  .Header .container {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px; }
+  .Header-menu {
+    margin-left: auto;
+    /*menuyu en saga alıyorum*/
+    display: flex; }

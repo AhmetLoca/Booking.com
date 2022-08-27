@@ -346,3 +346,22 @@ table {
 
 td {
   padding: 0; }
+
+/*Genel kapsayıcı*/
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  /*margin-left ve margin-right ile sagdan soldan ortaladık*/
+  margin-right: auto; }
+
+.Header {
+  border-bottom: 1px solid #ddd; }
+  .Header .container {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px; }
+  .Header-menu {
+    margin-left: auto;
+    /*menuyu en saga alıyorum*/
+    display: flex; }
