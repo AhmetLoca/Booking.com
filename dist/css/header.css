@@ -10,3 +10,8 @@
     margin-left: auto;
     /*menuyu en saga alıyorum*/
     display: flex; }
+    .Header-menu-user a {
+      padding-left: 20px;
+      padding-right: 20px; }
+  .Header-logo img {
+    width: 144px; }

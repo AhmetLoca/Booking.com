@@ -1,5 +1,11 @@
 @charset "UTF-8";
 /*Sitemizin ana renkleri burada tanımlanacak.*/
+/* font-family'i burada tanımlama amacımız : başka bir zaman font'umu değiştirmek istediğimde aramadan buradan değiştirebileyim.
+sans-serif : her işletim sistemi kendi font'unu kullanır.
+*/
+/*responsive ile alakali işlemleri burada yapacagız*/
+/*Alttaki standart responsive yapısını bootstrap'ten aldık.*/
+/*mq: media query*/
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -354,14 +360,83 @@ td {
   /*margin-left ve margin-right ile sagdan soldan ortaladık*/
   margin-right: auto; }
 
+a {
+  color: #083B87; }
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor; }
+
+body {
+  font-family: "Open Sans", sans-serif; }
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 40px;
+  background-color: #01ACEE;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 3px; }
+
 .Header {
   border-bottom: 1px solid #ddd; }
   .Header .container {
     display: flex;
     align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px; }
+    height: 64px; }
+  .Header-logo img {
+    width: 144px; }
+  @media (min-width: 768px) {
+    .Header-switch {
+      /*mq adındaki mixin'i git getir.
+      mq'a herhangi bir deger vermediğimiz için 
+      varsayılan değeri kullanıyor. mq'nun içindeki süslü parantez içine ne yazdıysak mq içindeki @content'e yerleştiriyor.*/
+      display: none; } }
+  @media (min-width: 992px) {
+    .Header-switch {
+      display: block; } }
   .Header-menu {
     margin-left: auto;
     /*menuyu en saga alıyorum*/
     display: flex; }
+    .Header-menu-user {
+      display: flex;
+      /*esnek kutu model stilini almış oldu. Boylelikle height'i çalıştı.*/ }
+      .Header-menu-user a {
+        display: inline-flex;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        height: 40px;
+        /*height'i ilk önce kabul etmedi. Çünkü a etiketi block bir
+        element olmadıgı icin(inline bir element. İnline element'ler yüksekliği algılayamaz.) */ }
+        .Header-menu-user a:hover {
+          background-color: #eee; }
+    .Header-menu-helper {
+      display: flex;
+      margin-left: 20px; }
+      .Header-menu-helper select {
+        appearance: none;
+        /*select, custom hale geldi*/
+        background-color: transparent;
+        border: 1px solid #E0E6F1;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: #083B87;
+        height: 40px;
+        border-radius: 0; }
+        .Header-menu-helper select:nth-child(1) {
+          border-bottom-left-radius: 3px;
+          border-top-left-radius: 3px; }
+        .Header-menu-helper select:nth-child(2) {
+          border-left-width: 0px;
+          /*ortadaki iki border oldugu için birini kaldırdık.*/
+          border-bottom-right-radius: 3px;
+          border-top-right-radius: 3px; }

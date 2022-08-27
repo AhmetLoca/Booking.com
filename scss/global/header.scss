@@ -1,0 +1,70 @@
+.Header{
+  border-bottom:1px solid #ddd;
+  .container{
+    display:flex;
+    align-items:center;
+    height:64px;
+  }
+  &-logo{
+    img{
+    width:144px;
+    }
+  }
+
+  &-switch{
+    @include mq{ 
+      /*mq adındaki mixin'i git getir.
+      mq'a herhangi bir deger vermediğimiz için 
+      varsayılan değeri kullanıyor. mq'nun içindeki süslü parantez içine ne yazdıysak mq içindeki @content'e yerleştiriyor.*/
+      display:none;
+    }
+    @include mq('desktop'){ 
+      display:block;
+    }
+  }
+  &-menu{
+    margin-left : auto; /*menuyu en saga alıyorum*/
+    display:flex;
+    &-user{
+    display:flex; /*esnek kutu model stilini almış oldu. Boylelikle height'i çalıştı.*/    
+      a{
+        display:inline-flex;
+        align-items:center;
+        padding-left:20px;
+        padding-right:20px;
+        height:$finger-size;
+        /*height'i ilk önce kabul etmedi. Çünkü a etiketi block bir
+        element olmadıgı icin(inline bir element. İnline element'ler yüksekliği algılayamaz.) */
+        &:hover{
+          background-color:#eee;
+        }
+      }
+    }
+
+    &-helper{
+      display:flex;
+      margin-left:20px; 
+    select{
+      appearance : none; /*select, custom hale geldi*/
+      background-color:transparent;
+      border:1px solid #E0E6F1;
+      padding-left:10px;
+      padding-right:10px;
+      color:$color-navy;
+      height:$finger-size;
+      border-radius:0;
+      
+      &:nth-child(1){
+        border-bottom-left-radius:$border-radius;
+        border-top-left-radius:$border-radius;
+      }
+      &:nth-child(2){
+        border-left-width:0px; /*ortadaki iki border oldugu için birini kaldırdık.*/
+        border-bottom-right-radius:$border-radius;
+        border-top-right-radius:$border-radius;
+      }
+
+      }
+    }
+  }
+}

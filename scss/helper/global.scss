@@ -1,0 +1,35 @@
+/*Genel kapsayıcı*/
+.container{
+  max-width:$max-width;
+  margin-left:auto; /*margin-left ve margin-right ile sagdan soldan ortaladık*/
+  margin-right:auto;
+}
+
+a{
+  color:$color-navy;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+body{
+  font-family: $font-family;
+}
+
+.button{
+  display:inline-flex;
+  align-items:center;
+  padding-left:20px;
+  padding-right:20px;
+  height:$finger-size;
+  background-color:$color-blue;
+  font-weight: bold;
+  color:#fff; 
+  border-radius:$border-radius;
+}

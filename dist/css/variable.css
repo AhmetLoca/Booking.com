@@ -1,2 +1,5 @@
 @charset "UTF-8";
 /*Sitemizin ana renkleri burada tanımlanacak.*/
+/* font-family'i burada tanımlama amacımız : başka bir zaman font'umu değiştirmek istediğimde aramadan buradan değiştirebileyim.
+sans-serif : her işletim sistemi kendi font'unu kullanır.
+*/
