@@ -8,7 +8,7 @@
     align-items:center;
   }
 
-  &-item { /*Bem metodolojisini kullanıyoruz.(her şeyin bir className'i      
+  &-item { /*BEM metodolojisini kullanıyoruz.(her şeyin bir className'i      
              oluyor)Hiçbir zaman id kullanmıyoruz. ID kullandığınızda cok ciddi problemlerle karşı karşıya kalırsınız. Çünkü id kullandığınız an da, en güçlü css seçicisi id oldugu için id'ye tanımladığınız bir css özelliğini ezmek için bu sefer important kulllanmanız lazım. Bu da riskli.*/
     margin-right:20px;
     font-size:$font-size-small;

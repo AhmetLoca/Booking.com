@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*Sitemizin ana renkleri burada tanımlanacak.*/
 /* 16px'in yüzde 90'ni kadar. */
-/* font-family'i burada tanımlama amacımız : başka bir zaman font'umu değiştirmek istediğimde aramadan buradan değiştirebileyim.
+/* font-family'i burada tanımlama amacımız : Başka bir zaman font'umu değiştirmek istediğimde aramadan buradan değiştirebileyim.
 sans-serif : her işletim sistemi kendi font'unu kullanır.
 */
 /*responsive ile alakali işlemleri burada yapacagız*/
@@ -386,6 +386,7 @@ a {
   background-color: transparent;
   font-weight: bold;
   color: #fff;
+  font-family: inherit;
   border-radius: 3px; }
   .button-icon {
     justify-content: center;
@@ -397,8 +398,12 @@ a {
     color: white;
     background-color: #01ACEE; }
 
+.text {
+  font-family: inherit;
+  border: 0;
+  height: 40px; }
+
 .Header {
-  border-bottom: 1px solid #ddd;
   height: 68px; }
   .Header .container {
     position: relative;
@@ -406,7 +411,7 @@ a {
     align-items: center;
     height: 100%;
     /*Yukarıda .Header'a belli bir yükseklik verdik.
-    height:100% yaparak container'timiz o kadr büyümüş oldu.*/ }
+    height:100% yaparak container'timiz o kadar büyümüş oldu.*/ }
   .Header-logo img {
     width: 144px; }
   .Header-switch {
@@ -431,7 +436,7 @@ a {
     /*bug'in öünene geçtik (z-index problemi). */
     opacity: 0;
     transition: .2s;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     top: 100%;
@@ -450,6 +455,7 @@ a {
       pointer-events: auto; }
     @media (min-width: 768px) {
       .Header-menu {
+        pointer-events: auto;
         opacity: 1;
         transform: translateY(0);
         transition: 0s;
@@ -537,7 +543,7 @@ a {
     display: flex;
     align-items: center; }
   .Navigation-item {
-    /*Bem metodolojisini kullanıyoruz.(her şeyin bir className'i      
+    /*BEM metodolojisini kullanıyoruz.(her şeyin bir className'i      
              oluyor)Hiçbir zaman id kullanmıyoruz. ID kullandığınızda cok ciddi problemlerle karşı karşıya kalırsınız. Çünkü id kullandığınız an da, en güçlü css seçicisi id oldugu için id'ye tanımladığınız bir css özelliğini ezmek için bu sefer important kulllanmanız lazım. Bu da riskli.*/
     margin-right: 20px;
     font-size: 0.9em; }
@@ -547,7 +553,7 @@ a {
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
-  background-color: #083B87; }
+  background: #083B87 url(../../dist/img/showcase_back.jpg) no-repeat center center/cover; }
 
 .Search {
   background-color: #FBBE00;
@@ -555,7 +561,8 @@ a {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); }
   .Search-form {
     position: relative;
-    display: flex; }
+    display: flex;
+    flex-direction: column; }
   .Search .asd {
     position: absolute;
     right: 0; }

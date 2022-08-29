@@ -1,5 +1,4 @@
 .Header{
-  border-bottom:1px solid #ddd;
   height:68px;
 
   .container{
@@ -8,7 +7,7 @@
     align-items:center;
     height:100%;
     /*Yukarıda .Header'a belli bir yükseklik verdik.
-    height:100% yaparak container'timiz o kadr büyümüş oldu.*/
+    height:100% yaparak container'timiz o kadar büyümüş oldu.*/
   }
   &-logo{
     img{
@@ -20,6 +19,7 @@
     position:relative;/*mevcut pozisyonundan 10px kaydır diyoruz.*/
     left:10px;
     @include mq{  /*there is a mq mixin*/
+
       /*mq adındaki mixin'i git getir.
         mq'a herhangi bir deger vermediğimiz için 
         varsayılan değeri kullanıyor. 
@@ -28,7 +28,6 @@
     }
   }
 
-
   &-menu{ // Header-menu
     pointer-events:none; /* pointer-events verdiğiniz hiçbir elemana
     mouse tıklayamıyor */
@@ -36,7 +35,7 @@
     opacity:0;
     //transform:translateX(100%);
     transition:.2s;
-    position:absolute;
+    position:fixed;
     left : 0;
     right : 0;
     top :100%;
@@ -56,8 +55,8 @@
       pointer-events:auto;
     }
 
-
     @include mq("tablet"){
+      pointer-events:auto;
       opacity:1;
       transform:translateY(0);
       transition:0s;
@@ -77,9 +76,11 @@
       display:flex; /*esnek kutu model stilini almış oldu. Boylelikle height'i çalıştı.*/   
       flex-direction:column;
       align-items:center;
+
       @include mq('tablet'){
         flex-direction:row;
       }
+      
       a{
         width:100%;
         display:inline-flex;
