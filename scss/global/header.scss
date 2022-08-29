@@ -10,17 +10,19 @@
     width:144px;
     }
   }
+  &-switch{ 
+    @include mq{  /*there is a mq mixin*/
 
-  &-switch{
-    @include mq{ 
       /*mq adındaki mixin'i git getir.
-      mq'a herhangi bir deger vermediğimiz için 
-      varsayılan değeri kullanıyor. mq'nun içindeki süslü parantez içine ne yazdıysak mq içindeki @content'e yerleştiriyor.*/
+        mq'a herhangi bir deger vermediğimiz için 
+        varsayılan değeri kullanıyor. 
+        mq'nin içindeki süslü parantez içine ne yazdıysak mq içindeki @content'e yerleştiriyor.*/
       display:none;
     }
     @include mq('desktop'){ 
       display:block;
     }
+    /*switch'imiz tablet'e görünmesin desktop'a görünsün dedik.*/
   }
   &-menu{
     margin-left : auto; /*menuyu en saga alıyorum*/
@@ -40,7 +42,6 @@
         }
       }
     }
-
     &-helper{
       display:flex;
       margin-left:20px; 
@@ -59,11 +60,11 @@
         border-top-left-radius:$border-radius;
       }
       &:nth-child(2){
-        border-left-width:0px; /*ortadaki iki border oldugu için birini kaldırdık.*/
+        border-left-width:0px; 
+        /*ortadaki iki border oldugu için birini kaldırdık.*/
         border-bottom-right-radius:$border-radius;
         border-top-right-radius:$border-radius;
-      }
-
+        }
       }
     }
   }

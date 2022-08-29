@@ -4,7 +4,7 @@
 sans-serif : her işletim sistemi kendi font'unu kullanır.
 */
 /*responsive ile alakali işlemleri burada yapacagız*/
-/*Alttaki standart responsive yapısını bootstrap'ten aldık.*/
+/*Alttaki standart responsive yapısını bootstrap sitesinden aldık.*/
 /*mq: media query*/
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -393,15 +393,21 @@ body {
     height: 64px; }
   .Header-logo img {
     width: 144px; }
-  @media (min-width: 768px) {
-    .Header-switch {
-      /*mq adındaki mixin'i git getir.
-      mq'a herhangi bir deger vermediğimiz için 
-      varsayılan değeri kullanıyor. mq'nun içindeki süslü parantez içine ne yazdıysak mq içindeki @content'e yerleştiriyor.*/
-      display: none; } }
-  @media (min-width: 992px) {
-    .Header-switch {
-      display: block; } }
+  .Header-switch {
+    /*switch'imiz tablet'e görünmesin desktop'a görünsün dedik.*/ }
+    @media (min-width: 768px) {
+      .Header-switch {
+        /*there is a mq mixin*/
+        /*mq adındaki mixin'i git getir.
+        mq'a herhangi bir deger vermediğimiz için 
+        varsayılan değeri kullanıyor. 
+        mq'nin içindeki süslü parantez içine ne yazdıysak mq içindeki @content'e yerleştiriyor.*/
+        display: none;
+        /* Sana gönderdiğim content'i al buraya yerleştir 
+                   ve bana geri dön*/ } }
+    @media (min-width: 992px) {
+      .Header-switch {
+        display: block; } }
   .Header-menu {
     margin-left: auto;
     /*menuyu en saga alıyorum*/

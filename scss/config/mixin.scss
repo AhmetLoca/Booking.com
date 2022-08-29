@@ -1,27 +1,25 @@
 /*responsive ile alakali işlemleri burada yapacagız*/
 
-/*Alttaki standart responsive yapısını bootstrap'ten aldık.*/
+/*Alttaki standart responsive yapısını bootstrap sitesinden aldık.*/
 /*mq: media query*/
 @mixin mq($width: 'tablet'){
   @if($width == 'tablet'){
-    //Medium devices (tables, 768px and up)
+    // Medium devices (tables, 768px and up)
     @media (min-width:768px){
-      @content;
+      @content; /* Sana gönderdiğim content'i al buraya yerleştir 
+                   ve bana geri dön*/ 
     }
   }@else if($width == 'desktop'){
-     //Large devices (desktops, 992px and up)
+     // Large devices (desktops, 992px and up)
      @media (min-width:992px){
       @content;
      }
   }@else if($width == 'large'){
-     //Extra large devices (large desktops, 1200px and up)
+     // Extra large devices (large desktops, 1200px and up)
      @media (min-width:1200px){
       @content;
      }
   }
 }
-
 //Small devices(landscape phones, 576px and up)
 //@media (min-width:576px){}
-
-
