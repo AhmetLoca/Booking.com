@@ -1,8 +1,14 @@
+body{
+  font-family: $font-family;
+}
+
 /*Genel kapsayıcı*/
 .container{
   max-width:$max-width;
   margin-left:auto; /*margin-left ve margin-right ile sagdan soldan ortaladık*/
   margin-right:auto;
+  padding-left:$gutter;
+  padding-right:$gutter;
 }
 
 a{
@@ -11,15 +17,11 @@ a{
 
 .icon {
   display: inline-block;
-  width: 1em;
-  height: 1em;
+  width: 24px;
+  height: 24px;
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
-}
-
-body{
-  font-family: $font-family;
 }
 
 .button{
@@ -28,8 +30,20 @@ body{
   padding-left:20px;
   padding-right:20px;
   height:$finger-size;
-  background-color:$color-blue;
+  background-color:transparent;
   font-weight: bold;
   color:#fff; 
   border-radius:$border-radius;
+  &-icon{
+    justify-content:center;
+    color:black;
+    padding-left:0;
+    padding-right:0;
+    width:$finger-size;
+  }
+
+  &-blue{
+    color:white;
+    background-color:$color-blue;
+  }
 }

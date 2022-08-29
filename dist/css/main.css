@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /*Sitemizin ana renkleri burada tanımlanacak.*/
+/* 16px'in yüzde 90'ni kadar. */
 /* font-family'i burada tanımlama amacımız : başka bir zaman font'umu değiştirmek istediğimde aramadan buradan değiştirebileyim.
 sans-serif : her işletim sistemi kendi font'unu kullanır.
 */
@@ -353,26 +354,28 @@ table {
 td {
   padding: 0; }
 
+body {
+  font-family: "Open Sans", sans-serif; }
+
 /*Genel kapsayıcı*/
 .container {
-  max-width: 1200px;
+  max-width: 1140px;
   margin-left: auto;
   /*margin-left ve margin-right ile sagdan soldan ortaladık*/
-  margin-right: auto; }
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px; }
 
 a {
   color: #083B87; }
 
 .icon {
   display: inline-block;
-  width: 1em;
-  height: 1em;
+  width: 24px;
+  height: 24px;
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor; }
-
-body {
-  font-family: "Open Sans", sans-serif; }
 
 .button {
   display: inline-flex;
@@ -380,21 +383,37 @@ body {
   padding-left: 20px;
   padding-right: 20px;
   height: 40px;
-  background-color: #01ACEE;
+  background-color: transparent;
   font-weight: bold;
   color: #fff;
   border-radius: 3px; }
+  .button-icon {
+    justify-content: center;
+    color: black;
+    padding-left: 0;
+    padding-right: 0;
+    width: 40px; }
+  .button-blue {
+    color: white;
+    background-color: #01ACEE; }
 
 .Header {
-  border-bottom: 1px solid #ddd; }
+  border-bottom: 1px solid #ddd;
+  height: 68px; }
   .Header .container {
+    position: relative;
     display: flex;
     align-items: center;
-    height: 64px; }
+    height: 100%;
+    /*Yukarıda .Header'a belli bir yükseklik verdik.
+    height:100% yaparak container'timiz o kadr büyümüş oldu.*/ }
   .Header-logo img {
     width: 144px; }
   .Header-switch {
-    /*switch'imiz tablet'e görünmesin desktop'a görünsün dedik.*/ }
+    margin-left: auto;
+    position: relative;
+    /*mevcut pozisyonundan 10px kaydır diyoruz.*/
+    left: 10px; }
     @media (min-width: 768px) {
       .Header-switch {
         /*there is a mq mixin*/
@@ -405,19 +424,65 @@ body {
         display: none;
         /* Sana gönderdiğim content'i al buraya yerleştir 
                    ve bana geri dön*/ } }
-    @media (min-width: 992px) {
-      .Header-switch {
-        display: block; } }
   .Header-menu {
-    margin-left: auto;
-    /*menuyu en saga alıyorum*/
-    display: flex; }
+    pointer-events: none;
+    /* pointer-events verdiğiniz hiçbir elemana
+    mouse tıklayamıyor */
+    /*bug'in öünene geçtik (z-index problemi). */
+    opacity: 0;
+    transition: .2s;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+    .Header.menu-show .Header-menu {
+      /*is-show oldugunda display:flex özelliğini al.*/
+      pointer-events: auto;
+      opacity: 1;
+      pointer-events: auto; }
+    @media (min-width: 768px) {
+      .Header-menu {
+        opacity: 1;
+        transform: translateY(0);
+        transition: 0s;
+        margin-left: auto;
+        /*menuyu en saga alıyorum*/
+        flex-direction: row;
+        /*tablet öz. yan yana gelsin.*/
+        position: static;
+        /* Daha önce yazılmış top, left, right'in hepsini 
+      sıfırladım.*/
+        box-shadow: none;
+        background-color: transparent;
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+        /* Sana gönderdiğim content'i al buraya yerleştir 
+                   ve bana geri dön*/ } }
     .Header-menu-user {
+      margin-right: 10px;
       display: flex;
-      /*esnek kutu model stilini almış oldu. Boylelikle height'i çalıştı.*/ }
+      /*esnek kutu model stilini almış oldu. Boylelikle height'i çalıştı.*/
+      flex-direction: column;
+      align-items: center; }
+      @media (min-width: 768px) {
+        .Header-menu-user {
+          flex-direction: row;
+          /* Sana gönderdiğim content'i al buraya yerleştir 
+                   ve bana geri dön*/ } }
       .Header-menu-user a {
+        width: 100%;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         padding-left: 20px;
         padding-right: 20px;
         height: 40px;
@@ -425,9 +490,26 @@ body {
         element olmadıgı icin(inline bir element. İnline element'ler yüksekliği algılayamaz.) */ }
         .Header-menu-user a:hover {
           background-color: #eee; }
+    .Header-menu-property {
+      /*List your property*/
+      justify-content: center;
+      margin-top: 20px; }
+      @media (min-width: 768px) {
+        .Header-menu-property {
+          margin-top: 0;
+          /* Sana gönderdiğim content'i al buraya yerleştir 
+                   ve bana geri dön*/ } }
     .Header-menu-helper {
       display: flex;
-      margin-left: 20px; }
+      justify-content: center;
+      margin-top: 20px; }
+      @media (min-width: 768px) {
+        .Header-menu-helper {
+          margin-left: 20px;
+          /*margin-left değeri sana görünür olduktan sonra lazım.*/
+          margin-top: 0;
+          /* Sana gönderdiğim content'i al buraya yerleştir 
+                   ve bana geri dön*/ } }
       .Header-menu-helper select {
         appearance: none;
         /*select, custom hale geldi*/
@@ -446,3 +528,34 @@ body {
           /*ortadaki iki border oldugu için birini kaldırdık.*/
           border-bottom-right-radius: 3px;
           border-top-right-radius: 3px; }
+
+.Navigation {
+  height: 50px;
+  background-color: #F1F6FF; }
+  .Navigation .container {
+    height: 100%;
+    display: flex;
+    align-items: center; }
+  .Navigation-item {
+    /*Bem metodolojisini kullanıyoruz.(her şeyin bir className'i      
+             oluyor)Hiçbir zaman id kullanmıyoruz. ID kullandığınızda cok ciddi problemlerle karşı karşıya kalırsınız. Çünkü id kullandığınız an da, en güçlü css seçicisi id oldugu için id'ye tanımladığınız bir css özelliğini ezmek için bu sefer important kulllanmanız lazım. Bu da riskli.*/
+    margin-right: 20px;
+    font-size: 0.9em; }
+
+.Showcase {
+  text-align: center;
+  color: #fff;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #083B87; }
+
+.Search {
+  background-color: #FBBE00;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); }
+  .Search-form {
+    position: relative;
+    display: flex; }
+  .Search .asd {
+    position: absolute;
+    right: 0; }

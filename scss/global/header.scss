@@ -1,9 +1,14 @@
 .Header{
   border-bottom:1px solid #ddd;
+  height:68px;
+
   .container{
+    position:relative;
     display:flex;
     align-items:center;
-    height:64px;
+    height:100%;
+    /*Yukarıda .Header'a belli bir yükseklik verdik.
+    height:100% yaparak container'timiz o kadr büyümüş oldu.*/
   }
   &-logo{
     img{
@@ -11,27 +16,75 @@
     }
   }
   &-switch{ 
+    margin-left:auto;
+    position:relative;/*mevcut pozisyonundan 10px kaydır diyoruz.*/
+    left:10px;
     @include mq{  /*there is a mq mixin*/
-
       /*mq adındaki mixin'i git getir.
         mq'a herhangi bir deger vermediğimiz için 
         varsayılan değeri kullanıyor. 
         mq'nin içindeki süslü parantez içine ne yazdıysak mq içindeki @content'e yerleştiriyor.*/
       display:none;
     }
-    @include mq('desktop'){ 
-      display:block;
-    }
-    /*switch'imiz tablet'e görünmesin desktop'a görünsün dedik.*/
   }
-  &-menu{
-    margin-left : auto; /*menuyu en saga alıyorum*/
+
+
+  &-menu{ // Header-menu
+    pointer-events:none; /* pointer-events verdiğiniz hiçbir elemana
+    mouse tıklayamıyor */
+     /*bug'in öünene geçtik (z-index problemi). */
+    opacity:0;
+    //transform:translateX(100%);
+    transition:.2s;
+    position:absolute;
+    left : 0;
+    right : 0;
+    top :100%;
+    padding-left:$gutter;
+    padding-right:$gutter;
+    padding-bottom:20px;
+    background-color:#ccc; 
     display:flex;
+    flex-direction:column;
+    background-color:white;
+    box-shadow:0 10px 20px rgba(black, .2);
+
+    .Header.menu-show & { /*is-show oldugunda display:flex özelliğini al.*/
+      pointer-events:auto;
+      opacity:1;
+      //transform:translateY(0);
+      pointer-events:auto;
+    }
+
+
+    @include mq("tablet"){
+      opacity:1;
+      transform:translateY(0);
+      transition:0s;
+      margin-left : auto; /*menuyu en saga alıyorum*/
+      flex-direction:row; /*tablet öz. yan yana gelsin.*/
+      position:static; /* Daha önce yazılmış top, left, right'in hepsini 
+      sıfırladım.*/
+      box-shadow:none;
+      background-color:transparent;
+      padding-left:0;
+      padding-right:0;
+      padding-bottom:0; 
+    }
+
     &-user{
-    display:flex; /*esnek kutu model stilini almış oldu. Boylelikle height'i çalıştı.*/    
+      margin-right:10px;
+      display:flex; /*esnek kutu model stilini almış oldu. Boylelikle height'i çalıştı.*/   
+      flex-direction:column;
+      align-items:center;
+      @include mq('tablet'){
+        flex-direction:row;
+      }
       a{
+        width:100%;
         display:inline-flex;
         align-items:center;
+        justify-content:center;
         padding-left:20px;
         padding-right:20px;
         height:$finger-size;
@@ -42,9 +95,24 @@
         }
       }
     }
+
+    &-property{ /*List your property*/
+      justify-content:center;
+      margin-top:20px;
+      @include mq('tablet'){
+        margin-top:0;
+      }
+    }
     &-helper{
       display:flex;
+      justify-content:center;
+      margin-top:20px;
+    @include mq('tablet'){
       margin-left:20px; 
+      /*margin-left değeri sana görünür olduktan sonra lazım.*/
+      margin-top:0;
+    }
+    
     select{
       appearance : none; /*select, custom hale geldi*/
       background-color:transparent;
@@ -60,8 +128,7 @@
         border-top-left-radius:$border-radius;
       }
       &:nth-child(2){
-        border-left-width:0px; 
-        /*ortadaki iki border oldugu için birini kaldırdık.*/
+        border-left-width:0px; /*ortadaki iki border oldugu için birini kaldırdık.*/
         border-bottom-right-radius:$border-radius;
         border-top-right-radius:$border-radius;
         }

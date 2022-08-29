@@ -1,0 +1,11 @@
+.Showcase {
+  padding-top: 100px;
+  padding-bottom: 100px; }
+
+.Search-form {
+  position: relative;
+  display: flex; }
+
+.Search .asd {
+  position: absolute;
+  right: 0; }
