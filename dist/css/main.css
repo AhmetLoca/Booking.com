@@ -355,7 +355,11 @@ td {
   padding: 0; }
 
 body {
-  font-family: "Open Sans", sans-serif; }
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.4; }
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2; }
 
 /*Genel kapsayıcı*/
 .container {
@@ -377,31 +381,101 @@ a {
   stroke: currentColor;
   fill: currentColor; }
 
+.select, .button, .text {
+  border: 0;
+  font-family: inherit;
+  display: inline-block;
+  border-radius: 3px;
+  font-weight: bold;
+  background-color: #fff; }
+
 .button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   padding-left: 20px;
   padding-right: 20px;
   height: 40px;
-  background-color: transparent;
   font-weight: bold;
-  color: #fff;
-  font-family: inherit;
-  border-radius: 3px; }
+  color: white;
+  background-color: #01ACEE;
+  /*body'e bir tane font tanımladık. Sen git kapsayıcındaki font'u kullan.*/ }
   .button-icon {
     justify-content: center;
     color: black;
     padding-left: 0;
     padding-right: 0;
-    width: 40px; }
-  .button-blue {
-    color: white;
-    background-color: #01ACEE; }
+    width: 40px;
+    background-color: transparent;
+    cursor: pointer; }
+  .button-full {
+    width: 100%; }
+  .button-navy {
+    background-color: #083B87; }
 
 .text {
-  font-family: inherit;
-  border: 0;
+  /*body'e bir tane font tanımladık. Sen git kapsayıcındaki font'u kullan.*/
+  min-height: 40px;
+  border-radius: 3px;
+  color: #083B87;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%; }
+  .text::placeholder, .text::-webkit-datetime-edit {
+    color: rgba(8, 59, 135, 0.5); }
+
+.select {
+  width: 100%;
+  color: #083B87;
   height: 40px; }
+
+.form-item {
+  position: relative; }
+  .form-item .icon {
+    position: absolute;
+    transform: translateY(-50%);
+    left: 5px;
+    top: 50%;
+    color: black; }
+  .form-item .text {
+    padding-left: 50px; }
+  .form-item .select {
+    padding-left: 40px; }
+
+.form-description {
+  margin-top: 8px; }
+
+.form-checkbox {
+  display: flex;
+  align-items: center; }
+
+.checkbox {
+  position: relative;
+  display: flex; }
+  .checkbox input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none; }
+  .checkbox:before {
+    content: "";
+    display: inline-block;
+    font-size: 18px;
+    width: 1.1em;
+    height: 1.1em;
+    border: 2px solid #fff; }
+  .checkbox .icon {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /*kendi büyüklüğünün yarısı kadar kenara gel. ve x eksenininde yarı boyutun kadar yukarı cık.*/
+    height: 15px;
+    width: 15px; }
+  .checkbox input:checked + .icon {
+    display: block; }
 
 .Header {
   height: 68px; }
@@ -433,13 +507,13 @@ a {
     pointer-events: none;
     /* pointer-events verdiğiniz hiçbir elemana
     mouse tıklayamıyor */
-    /*bug'in öünene geçtik (z-index problemi). */
+    /*bug'in önüne geçtik (z-index problemi). */
     opacity: 0;
     transition: .2s;
     position: fixed;
     left: 0;
     right: 0;
-    top: 100%;
+    top: 68px;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
@@ -464,8 +538,7 @@ a {
         flex-direction: row;
         /*tablet öz. yan yana gelsin.*/
         position: static;
-        /* Daha önce yazılmış top, left, right'in hepsini 
-      sıfırladım.*/
+        /* Daha önce yazılmış top, left, right'in hepsini sıfırladım.*/
         box-shadow: none;
         background-color: transparent;
         padding-left: 0;
@@ -492,8 +565,7 @@ a {
         padding-left: 20px;
         padding-right: 20px;
         height: 40px;
-        /*height'i ilk önce kabul etmedi. Çünkü a etiketi block bir
-        element olmadıgı icin(inline bir element. İnline element'ler yüksekliği algılayamaz.) */ }
+        /*height'i ilk önce kabul etmedi. Çünkü a etiketi block bir element olmadıgı icin(inline bir element. İnline element'ler yüksekliği algılayamaz.) */ }
         .Header-menu-user a:hover {
           background-color: #eee; }
     .Header-menu-property {
@@ -549,20 +621,33 @@ a {
     font-size: 0.9em; }
 
 .Showcase {
-  text-align: center;
   color: #fff;
-  padding-top: 100px;
+  padding-top: 30px;
   padding-bottom: 100px;
-  background: #083B87 url(../../dist/img/showcase_back.jpg) no-repeat center center/cover; }
+  background: #083B87 url(../../dist/img/showcase_back.jpg) no-repeat center center/cover;
+  text-align: center; }
+  .Showcase-subtitle {
+    margin-top: 10px; }
 
 .Search {
+  text-align: left;
+  margin-top: 30px;
   background-color: #FBBE00;
-  padding: 40px;
+  padding: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); }
   .Search-form {
     position: relative;
     display: flex;
     flex-direction: column; }
-  .Search .asd {
-    position: absolute;
-    right: 0; }
+    .Search-form-item + .Search-form-item {
+      /*Search-form-item'dan sonra Search-form item gelirse onun margin-top'i 20 olsun. Boylelikle hepsi bir üstekine 20px boşluk bırakmıs oldu.  
+      & ~ &(bundan sonra şu eleman demek.)*/
+      margin-top: 20px; }
+  .Search .for-work {
+    font-size: 0.9em;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .Search .for-work .checkbox {
+      margin-left: 10px; }

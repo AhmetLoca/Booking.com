@@ -10,47 +10,38 @@
 <body>
   <!-- Sayfanin hiçbir yerinde görünmeyecek ama sayfa içinde de var olacak iconlar.!-->
 
-
-
-
   <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-
-  
-
-
     <defs> <!--ekranin hiçbir yerinde görünmez.!-->
-
-
         <symbol id="icon-location" viewBox="0 0 32 32">
           <path d="M16 0c-5.523 0-10 4.477-10 10 0 10 10 22 10 22s10-12 10-22c0-5.523-4.477-10-10-10zM16 16c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z"></path>
         </symbol>
 
-          <symbol id="icon-calendar" viewBox="0 0 32 32">
-            <path d="M10 12h4v4h-4zM16 12h4v4h-4zM22 12h4v4h-4zM4 24h4v4h-4zM10 24h4v4h-4zM16 24h4v4h-4zM10 18h4v4h-4zM16 18h4v4h-4zM22 18h4v4h-4zM4 18h4v4h-4zM26 0v2h-4v-2h-14v2h-4v-2h-4v32h30v-32h-4zM28 30h-26v-22h26v22z"></path>
-          </symbol>
+        <symbol id="icon-calendar" viewBox="0 0 32 32">
+          <path d="M10 12h4v4h-4zM16 12h4v4h-4zM22 12h4v4h-4zM4 24h4v4h-4zM10 24h4v4h-4zM16 24h4v4h-4zM10 18h4v4h-4zM16 18h4v4h-4zM22 18h4v4h-4zM4 18h4v4h-4zM26 0v2h-4v-2h-14v2h-4v-2h-4v32h30v-32h-4zM28 30h-26v-22h26v22z"></path>
+        </symbol>
 
-          <symbol id="icon-user" viewBox="0 0 32 32">
+        <symbol id="icon-user" viewBox="0 0 32 32">
             <path d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"></path>
-          </symbol>
+        </symbol>
 
-          <symbol id="icon-menu" viewBox="0 0 32 32">
+        <symbol id="icon-menu" viewBox="0 0 32 32">
             <path d="M2 6h28v6h-28zM2 14h28v6h-28zM2 22h28v6h-28z"></path>
-          </symbol>
+        </symbol>
 
-
+        <symbol id="icon-checkmark" viewBox="0 0 32 32">
+          <path d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path>
+        </symbol>
     </defs>
   </svg>
 
 <!-- Header -->
-
 <header class="Header">
  <div class="container">
   <a class="Header-logo" href="">
     <img src="../dist/img/site-logo.png" alt="">
-   </a>
+  </a>
 
   <!--for mobile !-->
-
   <button class="Header-switch button button-icon" type="button">
     <svg class="icon icon-menu"><use xlink:href="#icon-menu"></use></svg>
   </button>
@@ -66,12 +57,10 @@
        <select>
           <option value="en">En</option>
        </select>
-
        <select>
           <option value="uah">UAH</option>
        </select>
-      </div>
-
+     </div>
   </div>
 </div>
 </header>
@@ -86,49 +75,61 @@
  </div>
 </nav>
 
-
+<!-- main !-->
 <main class="Main">
 <!-- Showcase !--> 
 <section class="Showcase"> <!-- section : Sayfadaki herbir bölüm. !-->
   <div class="container">
-    <h1>More deals than days in a year.</h1> 
-    <!-- h1 sayfada sadece BİR KERE KULLANILIR. O da sayfa başlıgı olarak geçer. !-->
-    <h3>From cosy country homes to funky city flats</h3>
+    <h1 class="Showcase-title">More deals than days in a year.</h1> 
+    <!-- h1 sayfada sadece BİR KERE KULLANILIR. O da sayfa başlığı olarak geçer. !-->
+    <h3 class="">From cosy country homes to funky city flats</h3>
 
     <div class="Search">
+      
       <form class="Search-form" action="">
-        <div>
+        <div class="Search-form-item">
           <div class="form-item">
             <svg class="icon icon-location"><use xlink:href="#icon-location"></use></svg>
-            <input class="text" type="text">
+            <input class="text" type="text" placeholder="Location">
           </div>
-          <small>Destination, property name or address</small>
+          <small class="form-description">Destination, property name or address</small>
         </div>
-
-
-        <div>
-          <div>
+        <div class="Search-form-item">
+          <div class="form-item">
             <svg class="icon icon-calendar"><use xlink:href="#icon-calendar"></use></svg>
-            <input type="date">
+            <input class="text" type="date">
+            <!-- object oriented mantıgını her yerde kullanıyoruz.
+              globalda bir tane text yazdım ve gittim inputa text'i verdim.!-->
           </div>
           <small>When?</small>
         </div>
-        <div>
+        <div class="Search-form-item">
+         <div class="form-item">
           <svg class="icon icon-user"><use xlink:href="#icon-user"></use></svg>
-          <select>
+          <select class="select">
             <option value="">123</option>
           </select>
+         </div>
         </div>
-        <div>
-          <button type="button">
+        <div class="Search-form-item">
+          <button class="button button-navy button-full" type="button">
             Let's get started
-          </button>
-        </div>
-        <div class="asd">
-          Are you travelling for work?
+          </button>  
+          <div class="for-work">
+            <label class="form-checkbox">
+              <!-- label yaparsan, yazıya da tıklasam checkbox'i click'lemiş olacagım!-->
+              Are you travelling for work?
+              <div class="checkbox">
+                <input type="checkbox">
+                <svg class="icon icon-checkmark"><use xlink:href="#icon-checkmark"></use></svg>
+            </div>
+            </label>
+          </div>
         </div>
       </form>
+
     </div>
+
   </div>
 </section>
 </main>

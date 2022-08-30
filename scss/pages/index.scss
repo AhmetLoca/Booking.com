@@ -1,23 +1,42 @@
 .Showcase {
-  text-align:center;
   color:#fff;
-  padding-top:100px;
+  padding-top:30px;
   padding-bottom:100px;
   background:$color-navy url(../../dist/img/showcase_back.jpg) no-repeat center center / cover;
+  text-align:center;
+  &-title {
+
+  }
+
+  &-subtitle{
+    margin-top:10px;
+  }
 }
-
 .Search {
+  text-align:left;
+  margin-top:30px;
   background-color:$color-yellow;
-  padding:40px;
+  padding:$gutter;
   box-shadow:0 20px 40px rgba(black, .2);
-
   &-form{
     position:relative;
     display:flex;
     flex-direction:column;
+    &-item{
+      & + & { /*Search-form-item'dan sonra Search-form item gelirse onun margin-top'i 20 olsun. Boylelikle hepsi bir üstekine 20px boşluk bırakmıs oldu.  
+      & ~ &(bundan sonra şu eleman demek.)*/
+      margin-top:20px;
+      }
+    }
   }
-  .asd{
-    position:absolute;
-    right:0;
+  .for-work{
+    font-size:$font-size-small;
+    margin-top:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    .checkbox {
+      margin-left:10px;
+    }
   }
 }

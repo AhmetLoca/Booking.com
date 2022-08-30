@@ -1,5 +1,6 @@
+$Header-height:68px;
 .Header{
-  height:68px;
+  height:$Header-height;
 
   .container{
     position:relative;
@@ -27,18 +28,17 @@
       display:none;
     }
   }
-
   &-menu{ // Header-menu
     pointer-events:none; /* pointer-events verdiğiniz hiçbir elemana
     mouse tıklayamıyor */
-     /*bug'in öünene geçtik (z-index problemi). */
+     /*bug'in önüne geçtik (z-index problemi). */
     opacity:0;
     //transform:translateX(100%);
     transition:.2s;
     position:fixed;
     left : 0;
     right : 0;
-    top :100%;
+    top :$Header-height;
     padding-left:$gutter;
     padding-right:$gutter;
     padding-bottom:20px;
@@ -47,14 +47,12 @@
     flex-direction:column;
     background-color:white;
     box-shadow:0 10px 20px rgba(black, .2);
-
     .Header.menu-show & { /*is-show oldugunda display:flex özelliğini al.*/
       pointer-events:auto;
       opacity:1;
       //transform:translateY(0);
       pointer-events:auto;
     }
-
     @include mq("tablet"){
       pointer-events:auto;
       opacity:1;
@@ -62,25 +60,21 @@
       transition:0s;
       margin-left : auto; /*menuyu en saga alıyorum*/
       flex-direction:row; /*tablet öz. yan yana gelsin.*/
-      position:static; /* Daha önce yazılmış top, left, right'in hepsini 
-      sıfırladım.*/
+      position:static; /* Daha önce yazılmış top, left, right'in hepsini sıfırladım.*/
       box-shadow:none;
       background-color:transparent;
       padding-left:0;
       padding-right:0;
       padding-bottom:0; 
     }
-
     &-user{
       margin-right:10px;
       display:flex; /*esnek kutu model stilini almış oldu. Boylelikle height'i çalıştı.*/   
       flex-direction:column;
       align-items:center;
-
       @include mq('tablet'){
         flex-direction:row;
       }
-      
       a{
         width:100%;
         display:inline-flex;
@@ -89,14 +83,12 @@
         padding-left:20px;
         padding-right:20px;
         height:$finger-size;
-        /*height'i ilk önce kabul etmedi. Çünkü a etiketi block bir
-        element olmadıgı icin(inline bir element. İnline element'ler yüksekliği algılayamaz.) */
+        /*height'i ilk önce kabul etmedi. Çünkü a etiketi block bir element olmadıgı icin(inline bir element. İnline element'ler yüksekliği algılayamaz.) */
         &:hover{
           background-color:#eee;
         }
       }
     }
-
     &-property{ /*List your property*/
       justify-content:center;
       margin-top:20px;
@@ -113,7 +105,6 @@
       /*margin-left değeri sana görünür olduktan sonra lazım.*/
       margin-top:0;
     }
-    
     select{
       appearance : none; /*select, custom hale geldi*/
       background-color:transparent;
@@ -122,8 +113,7 @@
       padding-right:10px;
       color:$color-navy;
       height:$finger-size;
-      border-radius:0;
-      
+      border-radius:0; 
       &:nth-child(1){
         border-bottom-left-radius:$border-radius;
         border-top-left-radius:$border-radius;

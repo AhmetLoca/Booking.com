@@ -1,5 +1,10 @@
 body{
   font-family: $font-family;
+  line-height:1.4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height:1.2; 
 }
 
 /*Genel kapsayıcı*/
@@ -24,37 +29,131 @@ a{
   fill: currentColor;
 }
 
+.select, .button, .text {
+  border:0;
+  font-family:inherit;
+  display:inline-block;
+  border-radius:$border-radius;
+  font-weight: bold;
+  background-color: #fff;
+}
+
 .button{
   display:inline-flex;
   align-items:center;
+  justify-content:center;
+  text-align:center;
   padding-left:20px;
   padding-right:20px;
   height:$finger-size;
-  background-color:transparent;
   font-weight: bold;
-  color:#fff; 
-  font-family:inherit;
-  border-radius:$border-radius;
+  color:white;
+  background-color:$color-blue;
+  //font-family:inherit;
+  /*body'e bir tane font tanımladık. Sen git kapsayıcındaki font'u kullan.*/
+  //border-radius:$border-radius;
   &-icon{
     justify-content:center;
     color:black;
     padding-left:0;
     padding-right:0;
     width:$finger-size;
+    background-color: transparent;
+    cursor: pointer;
   }
 
-  &-blue{
-    color:white;
-    background-color:$color-blue;
+  &-full {
+    width:100%;
+  }
+
+  &-navy{
+    background-color: $color-navy;
   }
 }
 
 .text{
-  font-family:inherit;
-  border:0;
+  //font-family:inherit; 
+  /*body'e bir tane font tanımladık. Sen git kapsayıcındaki font'u kullan.*/
+  //border:0;
+  min-height:$finger-size;
+  border-radius:$border-radius;
+  color:$color-navy;
+  font-weight:bold;
+  padding-left: 10px;
+  padding-right:10px;
+  width:100%;
+  &::placeholder,
+  &::-webkit-datetime-edit{
+    color:rgba($color-navy, .5);
+  }
+}
+
+.select{
+  //border:0;
+  //background-color: #fff;
+  //font-family:inherit;
+  //display:inline-block;
+  width:100%;
+  color:$color-navy;
+  //border-radius:$border-radius;
   height:$finger-size;
+  //font-weight: bold;
 }
 
 .form-item{
+  position:relative;
+  .icon{
+    position:absolute;
+    transform:translateY(-50%);
+    left:5px;
+    top:50%;
+    color:black;
+  }
+  .text{
+    padding-left:50px;
 
+  }
+  .select {
+    padding-left:40px;
+  }
+}
+.form-description {
+  margin-top : 8px;
+}
+
+.form-checkbox {
+  display:flex;
+  align-items:center; 
+}
+
+.checkbox{
+  position:relative;
+  display:flex;
+  input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+  }
+  &:before{
+    content:"";
+    display:inline-block;
+    font-size:18px;
+    width:1.1em;
+    height:1.1em;
+    border:2px solid #fff;
+  }
+  
+  .icon{
+    display:none;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%); /*kendi büyüklüğünün yarısı kadar kenara gel. ve x eksenininde yarı boyutun kadar yukarı cık.*/
+    height:15px;
+    width:15px;
+  }
+
+  input:checked + .icon {
+    display:block;
+  }
 }
